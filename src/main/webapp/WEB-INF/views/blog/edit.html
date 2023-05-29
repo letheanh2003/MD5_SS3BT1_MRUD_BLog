@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form th:action="@{/updateBlog}" th:object="${editBlog}" method="post">
+    <table>
+        <input type="hidden" th:field="*{id}">
+        <tr>
+            <td>Blog Name</td>
+            <td><input type="text" th:field="*{blogName}"></td>
+        </tr>
+        <tr>
+            <td>Description</td>
+            <td><textarea name="" id="" cols="30" rows="10" th:field="*{description}"></textarea></td>
+        </tr>
+        <tr>
+            <td>CategoryName</td>
+            <td>
+                <select name="" th:field="*{category}">
+                    <option th:each="cate :${categories}" th:value="${cate.getId()}"
+                            th:text="${cate.getCategoryName()}"></option>
+                </select>
+            </td>
+        </tr>
+    </table>
+    <button type="submit">Update</button>
+</form>
+</body>
+</html>
